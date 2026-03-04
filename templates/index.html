@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Currency Identifier | Premium Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Currency<span style="font-weight: 400;">AI</span></h1>
+            <p class="subtitle">Next-generation Indian Banknote Recognition</p>
+        </header>
+
+        <main class="main-grid">
+            <!-- Left Side: Upload -->
+            <section class="glass-card">
+                <div class="dropzone" id="dropzone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & Drop currency image here or click to browse</p>
+                    <img id="preview" style="max-width: 100%; border-radius: 8px; display: none; margin-top: 1rem;">
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                </div>
+
+                <div class="controls" style="margin-top: 2rem;">
+                    <div class="form-group">
+                        <label for="modelSelect">Neural Engine</label>
+                        <select id="modelSelect">
+                            <option value="MobileNetV2">MobileNetV2 (Fast & Lightweight)</option>
+                            <option value="ResNet50">ResNet50 (Deep & Accurate)</option>
+                        </select>
+                    </div>
+                    <button id="predictBtn" class="predict-btn" disabled>Identify Currency</button>
+                </div>
+
+                <!-- Result Inside Card -->
+                <div class="result-card" id="resultCard">
+                    <div class="result-header">IDENTIFIED DENOMINATION</div>
+                    <div class="prediction-text" id="predictionText">---</div>
+                    <div id="confidenceText" style="margin-top: 0.5rem; color: #94a3b8;">Confidence: 0%</div>
+                    <div class="confidence-bar-container">
+                        <div class="confidence-bar" id="confidenceBar"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Side: Analytics Preview -->
+            <section class="glass-card">
+                <div class="dashboard-title">
+                    <i class="fas fa-chart-line" style="color: var(--secondary-color);"></i>
+                    Performance Analytics
+                </div>
+                <p style="color: #94a3b8; margin-bottom: 1.5rem;">Comparison between current deployed models based on testing dataset.</p>
+                
+                <div class="metric-card">
+                    <h3>Accuracy Benchmark</h3>
+                    <img src="{{ url_for('static', filename='images/comparison_results.png') }}" class="metric-image" alt="Model Comparison">
+                </div>
+            </section>
+        </main>
+
+        <!-- Deep Analytics Section -->
+        <section class="dashboard">
+            <div class="dashboard-title">
+                <i class="fas fa-microscope" style="color: #4ade80;"></i>
+                Confusion Matrix Insights
+            </div>
+            
+            <div class="metric-grid">
+                <div class="glass-card metric-card">
+                    <h3>MobileNetV2 Matrix</h3>
+                    <img src="{{ url_for('static', filename='images/mobilenetv2_confusion_matrix.png') }}" class="metric-image" alt="MobileNetV2 Confusion Matrix">
+                </div>
+                <div class="glass-card metric-card">
+                    <h3>ResNet50 Matrix</h3>
+                    <img src="{{ url_for('static', filename='images/resnet50_confusion_matrix.png') }}" class="metric-image" alt="ResNet50 Confusion Matrix">
+                </div>
+            </div>
+        </section>
+
+        <footer style="text-align: center; margin-top: 4rem; color: #64748b; font-size: 0.9rem;">
+            &copy; 2026 CurrencyAI Project &bull; Built with Flask & TensorFlow
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
